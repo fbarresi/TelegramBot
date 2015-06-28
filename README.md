@@ -8,3 +8,5 @@ Just fork the master, add your token, program the task of your Bot and run!
 This project uses the new Telegram Bots API : https://core.telegram.org/bots/api
 
 and the python library Requests : http://docs.python-requests.org/en/latest
+
+To create a new Bot contact the [BotFather](https://telegram.me/botfather) or see the doc under: https://core.telegram.org/bots#botfather
