@@ -1,15 +1,26 @@
+import pprint
 import requests
 # install it via pip:
 # pip install requests
 # pip install requests[security]
-# info under : http://docs.python-requests.org/en/latest/
+import time
+from Bot import *
 from token import *
 
-r = requests.post("https://api.telegram.org/bot"+token+"/getUpdates")
-# print r.status_code
+repeat = True
 
-print r.json()
+bot = Bot(BotName)
 
-r = requests.post("https://api.telegram.org/bot"+token+"/getMe")
-
-print r.json()
+while repeat:
+	# repeat = False
+	receive = {'offset': bot.update_id}
+	r = requests.post("https://api.telegram.org/bot"+token+"/getUpdates", params=receive)
+	if r.status_code==200:
+		update = r.json()
+		for elem in update['result']:
+			if not bot.answere(elem):
+				print "Error during answere"
+	else :
+		print "Error ",r.status_code
+		print r.history
+		time.sleep(0.5)
